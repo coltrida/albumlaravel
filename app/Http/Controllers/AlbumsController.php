@@ -74,10 +74,6 @@ class AlbumsController extends Controller
         //dd($sql);
         //return DB::select($sql, $where);              ------------------------------------------------
 
-
-
-
-
         $albums = DB::select($sql, $where);
         return view('albums.albums', ['albums' => $albums]);*/
     }
@@ -101,7 +97,6 @@ class AlbumsController extends Controller
         }
         return ''.$res;                     //dobbiamo fare il cast perchè devo tornare una stringa e non un boolean
         //$sql = 'DELETE FROM albums where id= :id';
-        //return DB::delete($sql, ['id' => $id] );
         //return DB::delete($sql, ['id' => $id]);
         // return redirect()->back();
         //dd($id);

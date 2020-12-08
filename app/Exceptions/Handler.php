@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use function abort;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -48,6 +49,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException){
+            abort(404, 'No data found');
+        }
         return parent::render($request, $exception);
     }
 }

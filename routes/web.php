@@ -11,14 +11,15 @@
 |
 */
 
+use App\Events\NewAlbumCreated;
 use App\Models\Album;
 use App\Models\Photo;
 use App\User;
 
-//Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
 //  PRIMO MODO PER DARE UNA CONDIZIONE DI TIPO AI PARAMETRI PASSATI -----FUNZIONE ANONIMA------
-//  Route::get('welcome/{name?}/{lastname?}/{age?}', function(){
+//  Route::get('welcome/{name?}/{lastname?}/{age?}', function($name='', $lastname='', $age=0){
 //  return '<h1>hello world'.$name.' '.$lastname.' you are '.$age.' old</h1>';
 //  })
 //  ->where('name', '[a-zA-Z]+'),
@@ -115,3 +116,9 @@ Route::get('/users', function(){
 Auth::routes();
 
 //Route::get('/home', 'AlbumsController@index');
+
+//Rotta di prova per gli event e listener
+Route::get('testEvent', function(){
+    $album = Album::first();             // prendiamo il primo album
+    event(new NewAlbumCreated($album));  // abbiamo un metodo globale chiamato event() che scatena il metodo handler su cui                                              lanciamo l'evento NewAlbumCreated che si aspetta un album
+});

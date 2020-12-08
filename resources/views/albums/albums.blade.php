@@ -21,7 +21,7 @@
         </thead>
         @foreach($albums as $album)
             <tr>
-                <td>{{$album->id}} {{$album->album_name}} {{$album->photos_count}} pictures</td>
+                <td>({{$album->id}}) {{$album->album_name}} - {{$album->photos_count}} pictures</td>
                 <td>
                     @if($album->album_thumb)
                         <img width="100"  src="{{asset($album->path)}}" title="{{$album->album_name}}" alt="{{$album->album_name}}">
@@ -48,7 +48,7 @@
             </tr>
         @endforeach
         <tr>
-            <td class="row" colspan="5">
+            <td class="row" colspan="4">
                 <div>
                     {{$albums->links()}}
                 </div>
@@ -66,9 +66,10 @@
 
             $('div.alert').fadeOut(2000);
 
-            $('ul').on('click', 'a.btn-danger', function (ele) {
+            $('ul').on('click', 'a.btn-danger', function (ele) {  //è consigliato mettere il listener su ul e non sui li
                 ele.preventDefault();
                 //alert(ele);
+                // ele.target.href = $(this).attr('href')
                 //alert(ele.target.href);               //QUESTO è L'ALERT DEL TARGET LINK
                 var urlAlbum = ($(this).attr('href'));  //QUESTO è UN ALTRO MODO PER CATTURARE IL LINK (con jQuery)
                 var li = ele.target.parentNode;

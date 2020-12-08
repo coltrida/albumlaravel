@@ -150,7 +150,7 @@ class PhotosController extends Controller
     {
         $res = $photo->delete();
         if ($res){
-            $this->processFile($photo);
+            $this->deleteFile($photo);
         }
         //return Photo::destroy($id);
         return ''.$res;

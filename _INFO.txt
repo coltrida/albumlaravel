@@ -1,0 +1,3 @@
+Laravel 6 : La guida pratica al framework php più usato
+
+https://www.udemy.com/course/video-corso-laravel-5-guida-pratica-italiano/learn/lecture/6962568?start=0#overview
